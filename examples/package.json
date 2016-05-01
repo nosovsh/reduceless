@@ -1,0 +1,38 @@
+{
+  "name": "reduceless-example-one",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.dev.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trashgenerator/reduceless.git"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "Alexander Nosov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trashgenerator/reduceless/issues"
+  },
+  "homepage": "https://github.com/trashgenerator/reduceless#readme",
+  "dependencies": {
+    "babel-core": "^6.7.7",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-react": "^6.5.0",
+    "eslint": "^2.9.0",
+    "express": "^4.13.4",
+    "path": "^0.12.7",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "webpack": "^1.13.0",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
+  }
+}
