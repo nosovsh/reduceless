@@ -4,7 +4,12 @@
   "description": "Redux helpers",
   "main": "dist/index.js",
   "dependencies": {
-    "lodash": "^4.11.1"
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-preset-react": "^6.5.0",
+    "lodash": "^4.11.1",
+    "react": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",
