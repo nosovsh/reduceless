@@ -10,7 +10,7 @@ const setGlobalStateReducer = (state = {}, action) => {
   }
 }
 
-const wrapReducerWithSetGlobalState = reducer => {
+const wrapReducerWithSetGlobalState = (reducer = (s) => s) => {
   return function (state = {}, action) {
     const updatedState = setGlobalStateReducer(state, action);
     return reducer(updatedState, action);
