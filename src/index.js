@@ -1,11 +1,13 @@
 import update from './update';
-import setGlobalState from './setGlobalState';
+import setStateByPath from './setStateByPath';
+import replaceStateByPath from './setStateByPath';
 import wrapReducerWithSetGlobalState from './wrapReducerWithSetGlobalState';
 import connectSlicedState from './connectSlicedState';
 
 export {
   update,
   wrapReducerWithSetGlobalState,
-  setGlobalState,
+  setStateByPath,
+  replaceStateByPath,
   connectSlicedState
 }
