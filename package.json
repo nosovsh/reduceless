@@ -1,6 +1,6 @@
 {
   "name": "reduceless",
-  "version": "0.0.1",
+  "version": "0.0.2ver",
   "description": "Redux helpers",
   "main": "dist/index.js",
   "dependencies": {
