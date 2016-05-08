@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import {connect} from 'react-redux';
 import get from 'lodash/get';
 import setStateByPath from './setStateByPath';
