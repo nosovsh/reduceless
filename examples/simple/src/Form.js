@@ -1,12 +1,12 @@
 import React from 'react';
 import {connectSlicedState} from '../../../src';
 
-const Form = ({state, setState}) => {
+const Form = ({state, setState, replaceState}) => {
   return (
     <div>
       <div>
         Open
-        <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">
+        <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en" target="_blank">
           Redux DevTools
         </a>
         To see what's going on under the hood.
@@ -15,17 +15,17 @@ const Form = ({state, setState}) => {
         type="checkbox"
         checked={state.checked}
         onChange={e => setState({'checked': !state.checked})}/>
+      <input
+        type="text"
+        onChange={e => setState({'text': e.target.value})}/>
       <div>
-        Value: {state.checked.toString()}
+        Checkbox: {state.checked.toString()}
+      </div>
+      <div>
+        Text: {state.text}
       </div>
     </div>
   )
-}
-
-Form.defaultProps = {
-  state: {
-    checked: false
-  }
 }
 
 // Here magic is happening.
