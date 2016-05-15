@@ -1,15 +1,23 @@
 import React from 'react';
-import {connectSlicedState} from '../../src';
+import {connectSlicedState} from '../../../src';
 
 const Form = ({state, setState}) => {
   return (
     <div>
+      <div>
+        Open
+        <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">
+          Redux DevTools
+        </a>
+        To see what's going on under the hood.
+      </div>
       <input
         type="checkbox"
         checked={state.checked}
         onChange={e => setState({'checked': !state.checked})}/>
-      <br/>
-      value: {state.checked.toString()}
+      <div>
+        Value: {state.checked.toString()}
+      </div>
     </div>
   )
 }

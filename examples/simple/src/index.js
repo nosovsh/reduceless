@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers, compose} from 'redux';
-import wrapReducerWithSetGlobalState from '../../src/wrapReducerWithSetGlobalState';
+import wrapReducerWithSetGlobalState from '../../../src/wrapReducerWithSetGlobalState';
 import Form from './Form';
 
 const reducer = wrapReducerWithSetGlobalState(
