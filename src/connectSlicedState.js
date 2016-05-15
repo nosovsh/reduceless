@@ -1,8 +1,8 @@
 import React from 'react';
-import _ from 'lodash';
 import {connect} from 'react-redux';
 import get from 'lodash/get';
-import setGlobalState from './setGlobalState';
+import setStateByPath from './setStateByPath';
+import replaceStateByPath from './setStateByPath';
 
 /**
  * Connect provided component to `path` part of the redux state
@@ -26,10 +26,8 @@ export default function connectSlicedState(path) {
         return {
           ...props,
           state: slicedState,
-          setState: newState => dispatch(setGlobalState(path, {
-            ...slicedState,
-            ...newState
-          })),
+          setState: newState => dispatch(setStateByPath(path, newState)),
+          replaceState: newState => dispatch(replaceStateByPath(path, newState)),
         };
       }
     )(Connect);
