@@ -1,9 +1,12 @@
-# reduceless
+# Reduceless
 Simple abstraction over Redux to make state management as easy as React's vanilla `setState()` but with advantages of Redux.
 
-The idea is easy: you connect component to a slice of your Redux state to give this component full controll over this part of the state. It can read from this state and write to it in React style with `setState` and `replaceState`. You don't need any custom reducers, actions or constants to do it. Just read state and write to it.
+The idea is easy: you connect component to a slice of your Redux state to give this component full control over this part of the state. It can read from this state and write to it in React style with `setState` and `replaceState`. You don't need any custom reducers, actions or constants to do it. Just read state and write to it.
 
-Don't worry you are still able to use Redux in normal way. It's just set of helper to avoid boilerplate for simple actions.
+Don't worry you are still able to use Redux in the normal way. It's just set of helper to avoid boilerplate for simple actions.
+
+## Installation
+`npm install reduceless --save`
 
 ## How to use:
 1.wrap your root reducer with `wrapReducerWithSetGlobalState`
@@ -38,7 +41,7 @@ const PostForm = ({state, setState, replaceState}) => {
 ```
 `PostForm` component will recieve part of your Redux state located at `pages.blogs.data.activePost` in `state` prop. Component can change it using `setState(newState)` and `replaceState(newState)` props. This path could even not exist. It will be created automatically when component will write to it.
 
-3.[Optional] Use can use `replaceStateByPath` and `setStateByPath` action creators for advanced scenarious.
+3.[Optional] Use can use `replaceStateByPath` and `setStateByPath` action creators for advanced scenarios.
 ```
 import {connectSlicedState} from 'reduceless';
 import _ from 'lodash';
