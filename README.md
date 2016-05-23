@@ -6,11 +6,15 @@ The idea is easy: you connect component to a slice of your Redux state to give t
 Don't worry you are still able to use Redux in the normal way. It's just set of helper to avoid boilerplate for simple actions.
 
 ## Installation
-`npm install reduceless --save`
+
+```sh
+npm install reduceless --save
+```
 
 ## How to use:
 1.wrap your root reducer with `wrapReducerWithSetGlobalState`
-```
+
+```js
 import wrapReducerWithSetGlobalState from 'reduceless';
 
 const reducer = wrapReducerWithSetGlobalState(
@@ -21,8 +25,10 @@ const reducer = wrapReducerWithSetGlobalState(
   // })
 );
 ```
+
 2.connect your component to a slice of your state
-```
+
+```js
 import {connectSlicedState} from 'reduceless';
 
 @connectSlicedState('pages.blogs.data.activePost')
@@ -39,10 +45,12 @@ const PostForm = ({state, setState, replaceState}) => {
   )
 }
 ```
+
 `PostForm` component will recieve part of your Redux state located at `pages.blogs.data.activePost` in `state` prop. Component can change it using `setState(newState)` and `replaceState(newState)` props. This path could even not exist. It will be created automatically when component will write to it.
 
 3.[Optional] Use can use `replaceStateByPath` and `setStateByPath` action creators for advanced scenarios.
-```
+
+```js
 import {connectSlicedState} from 'reduceless';
 import _ from 'lodash';
 
@@ -68,6 +76,7 @@ export default connect(
   })
 )(Form);
 ```
+
 Still no actions, reducers or constants.
 
 4.[Optional] use initialReducer
@@ -90,9 +99,13 @@ Connects your `component` to a slice of your redux state located at `path`. Send
 ###`setStateByPath(path, newState)`
 Action creator that merges state located by `path` with `newState`.
 
-```dispatch(setStateByPath('posts.3.data', {title: 'new title'}))```
+```js
+dispatch(setStateByPath('posts.3.data', {title: 'new title'}))
+```
 
 ### `replaceStateByPath(path, newState)`
 Action creator that merges state located by `path` with `newState`.
 
-```dispatch(replaceStateByPath('posts.3.data.title', 'new title'))```
+```js
+dispatch(replaceStateByPath('posts.3.data.title', 'new title'))
+```
