@@ -2,12 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import get from 'lodash/get';
 import setStateByPath from './setStateByPath';
-import replaceStateByPath from './setStateByPath';
+import replaceStateByPath from './replaceStateByPath';
 
 /**
  * Connect provided component to `path` part of the redux state
  * @param path
- * @returns {Function}
+ * @returns {getStateType(path)}
  */
 export default function connectSlicedState(path) {
   return function (WrappedComponent) {
