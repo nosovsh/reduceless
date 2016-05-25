@@ -1916,9 +1916,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var dispatch = _ref.dispatch;
 
 	      var slicedState = (0, _get2.default)(state, path);
-	      return _extends({}, props, (_extends2 = {
-	        state: slicedState
-	      }, _defineProperty(_extends2, setStateName, function (newState) {
+	      return _extends({}, props, slicedState, (_extends2 = {}, _defineProperty(_extends2, setStateName, function (newState) {
 	        return dispatch((0, _setStateByPath2.default)(path, newState));
 	      }), _defineProperty(_extends2, replaceStateName, function (newState) {
 	        return dispatch((0, _replaceStateByPath2.default)(path, newState));

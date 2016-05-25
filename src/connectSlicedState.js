@@ -25,7 +25,7 @@ export default function connectSlicedState(path, setStateName = 'setState', repl
         const slicedState = get(state, path);
         return {
           ...props,
-          state: slicedState,
+          ...slicedState,
           [setStateName]: newState => dispatch(setStateByPath(path, newState)),
           [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
         };
