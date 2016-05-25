@@ -3685,6 +3685,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -3697,6 +3699,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @returns {getStateType(path)}
 	 */
 	function connectSlicedState(path) {
+	  var setStateName = arguments.length <= 1 || arguments[1] === undefined ? 'setState' : arguments[1];
+	  var replaceStateName = arguments.length <= 2 || arguments[2] === undefined ? 'replaceState' : arguments[2];
+
 	  return function (WrappedComponent) {
 	    var Connect = function (_React$Component) {
 	      _inherits(Connect, _React$Component);
@@ -3722,18 +3727,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, function (dispatch) {
 	      return { dispatch: dispatch };
 	    }, function (state, _ref, props) {
+	      var _extends2;
+
 	      var dispatch = _ref.dispatch;
 
 	      var slicedState = (0, _get2.default)(state, path);
-	      return _extends({}, props, {
-	        state: slicedState,
-	        setState: function setState(newState) {
-	          return dispatch((0, _setStateByPath2.default)(path, newState));
-	        },
-	        replaceState: function replaceState(newState) {
-	          return dispatch((0, _replaceStateByPath2.default)(path, newState));
-	        }
-	      });
+	      return _extends({}, props, (_extends2 = {
+	        state: slicedState
+	      }, _defineProperty(_extends2, setStateName, function (newState) {
+	        return dispatch((0, _setStateByPath2.default)(path, newState));
+	      }), _defineProperty(_extends2, replaceStateName, function (newState) {
+	        return dispatch((0, _replaceStateByPath2.default)(path, newState));
+	      }), _extends2));
 	    })(Connect);
 	  };
 	}
