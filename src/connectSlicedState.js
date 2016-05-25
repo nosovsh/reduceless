@@ -11,13 +11,6 @@ import replaceStateByPath from './replaceStateByPath';
  */
 export default function connectSlicedState(path) {
   return function (WrappedComponent) {
-    class Connect extends React.Component {
-      render() {
-        return (
-          <WrappedComponent {...this.props}/>
-        );
-      }
-    }
     return connect(
       state => state,
       dispatch => ({dispatch}),
@@ -30,6 +23,6 @@ export default function connectSlicedState(path) {
           replaceState: newState => dispatch(replaceStateByPath(path, newState)),
         };
       }
-    )(Connect);
+    )(WrappedComponent);
   };
 }
