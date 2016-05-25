@@ -3,7 +3,11 @@
   "version": "0.0.5",
   "description": "Redux helpers",
   "main": "dist/index.js",
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.7.7",
