@@ -15,7 +15,7 @@ npm install reduceless --save
 1.wrap your root reducer with `wrapReducerWithSetGlobalState`
 
 ```js
-import wrapReducerWithSetGlobalState from 'reduceless';
+import {wrapReducerWithSetGlobalState} from 'reduceless';
 
 const reducer = wrapReducerWithSetGlobalState(
   // Your normal reducers are going here
