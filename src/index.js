@@ -4,7 +4,7 @@ import replaceStateByPath from './setStateByPath';
 import wrapReducerWithSetGlobalState from './wrapReducerWithSetGlobalState';
 import connectSlicedState from './connectSlicedState';
 import initialStateReducer from './initialStateReducer';
-import connectSetReducerState from './connectSetReducerState';
+import connetReduxStateSetter from './connetReduxStateSetter';
 
 export {
   update,
@@ -13,5 +13,5 @@ export {
   replaceStateByPath,
   connectSlicedState,
   initialStateReducer,
-  connectSetReducerState,
+  connetReduxStateSetter,
 }

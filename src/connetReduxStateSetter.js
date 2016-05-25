@@ -8,7 +8,7 @@ import replaceStateByPath from './replaceStateByPath';
  * @param path
  * @returns {getStateType(path)}
  */
-export default function connectSetReducerState(path, setStateName = 'setState', replaceStateName = 'replaceState') {
+export default function connetReduxStateSetter(path, setStateName = 'setReduxState', replaceStateName = 'replaceState') {
   return function (WrappedComponent) {
     class Connect extends React.Component {
       render() {

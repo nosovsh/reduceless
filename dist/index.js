@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.connectSetReducerState = exports.initialStateReducer = exports.connectSlicedState = exports.replaceStateByPath = exports.setStateByPath = exports.wrapReducerWithSetGlobalState = exports.update = undefined;
+	exports.connetReduxStateSetter = exports.initialStateReducer = exports.connectSlicedState = exports.replaceStateByPath = exports.setStateByPath = exports.wrapReducerWithSetGlobalState = exports.update = undefined;
 
 	var _update = __webpack_require__(29);
 
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _wrapReducerWithSetGlobalState2 = _interopRequireDefault(_wrapReducerWithSetGlobalState);
 
-	var _connectSlicedState = __webpack_require__(54);
+	var _connectSlicedState = __webpack_require__(53);
 
 	var _connectSlicedState2 = _interopRequireDefault(_connectSlicedState);
 
@@ -81,9 +81,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _initialStateReducer2 = _interopRequireDefault(_initialStateReducer);
 
-	var _connectSetReducerState = __webpack_require__(53);
+	var _connetReduxStateSetter = __webpack_require__(54);
 
-	var _connectSetReducerState2 = _interopRequireDefault(_connectSetReducerState);
+	var _connetReduxStateSetter2 = _interopRequireDefault(_connetReduxStateSetter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93,7 +93,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.replaceStateByPath = _setStateByPath2.default;
 	exports.connectSlicedState = _connectSlicedState2.default;
 	exports.initialStateReducer = _initialStateReducer2.default;
-	exports.connectSetReducerState = _connectSetReducerState2.default;
+	exports.connetReduxStateSetter = _connetReduxStateSetter2.default;
 
 /***/ },
 /* 1 */
@@ -1762,91 +1762,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	exports.default = connectSetReducerState;
-
-	var _react = __webpack_require__(51);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(52);
-
-	var _setStateByPath = __webpack_require__(17);
-
-	var _setStateByPath2 = _interopRequireDefault(_setStateByPath);
-
-	var _replaceStateByPath = __webpack_require__(28);
-
-	var _replaceStateByPath2 = _interopRequireDefault(_replaceStateByPath);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	/**
-	 * Connect provided component to `path` part of the redux state
-	 * @param path
-	 * @returns {getStateType(path)}
-	 */
-	function connectSetReducerState(path) {
-	  var setStateName = arguments.length <= 1 || arguments[1] === undefined ? 'setState' : arguments[1];
-	  var replaceStateName = arguments.length <= 2 || arguments[2] === undefined ? 'replaceState' : arguments[2];
-
-	  return function (WrappedComponent) {
-	    var Connect = function (_React$Component) {
-	      _inherits(Connect, _React$Component);
-
-	      function Connect() {
-	        _classCallCheck(this, Connect);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Connect).apply(this, arguments));
-	      }
-
-	      _createClass(Connect, [{
-	        key: 'render',
-	        value: function render() {
-	          return _react2.default.createElement(WrappedComponent, this.props);
-	        }
-	      }]);
-
-	      return Connect;
-	    }(_react2.default.Component);
-
-	    return (0, _reactRedux.connect)(null, function (dispatch) {
-	      return { dispatch: dispatch };
-	    }, function (state, _ref, props) {
-	      var _extends2;
-
-	      var dispatch = _ref.dispatch;
-
-	      return _extends({}, props, (_extends2 = {}, _defineProperty(_extends2, setStateName, function (newState) {
-	        return dispatch((0, _setStateByPath2.default)(path, newState));
-	      }), _defineProperty(_extends2, replaceStateName, function (newState) {
-	        return dispatch((0, _replaceStateByPath2.default)(path, newState));
-	      }), _extends2));
-	    })(Connect);
-	  };
-	}
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	exports.default = connectSlicedState;
 
 	var _react = __webpack_require__(51);
@@ -1917,6 +1832,91 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var slicedState = (0, _get2.default)(state, path);
 	      return _extends({}, props, slicedState, (_extends2 = {}, _defineProperty(_extends2, setStateName, function (newState) {
+	        return dispatch((0, _setStateByPath2.default)(path, newState));
+	      }), _defineProperty(_extends2, replaceStateName, function (newState) {
+	        return dispatch((0, _replaceStateByPath2.default)(path, newState));
+	      }), _extends2));
+	    })(Connect);
+	  };
+	}
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	exports.default = connetReduxStateSetter;
+
+	var _react = __webpack_require__(51);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(52);
+
+	var _setStateByPath = __webpack_require__(17);
+
+	var _setStateByPath2 = _interopRequireDefault(_setStateByPath);
+
+	var _replaceStateByPath = __webpack_require__(28);
+
+	var _replaceStateByPath2 = _interopRequireDefault(_replaceStateByPath);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Connect provided component to `path` part of the redux state
+	 * @param path
+	 * @returns {getStateType(path)}
+	 */
+	function connetReduxStateSetter(path) {
+	  var setStateName = arguments.length <= 1 || arguments[1] === undefined ? 'setReduxState' : arguments[1];
+	  var replaceStateName = arguments.length <= 2 || arguments[2] === undefined ? 'replaceState' : arguments[2];
+
+	  return function (WrappedComponent) {
+	    var Connect = function (_React$Component) {
+	      _inherits(Connect, _React$Component);
+
+	      function Connect() {
+	        _classCallCheck(this, Connect);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Connect).apply(this, arguments));
+	      }
+
+	      _createClass(Connect, [{
+	        key: 'render',
+	        value: function render() {
+	          return _react2.default.createElement(WrappedComponent, this.props);
+	        }
+	      }]);
+
+	      return Connect;
+	    }(_react2.default.Component);
+
+	    return (0, _reactRedux.connect)(null, function (dispatch) {
+	      return { dispatch: dispatch };
+	    }, function (state, _ref, props) {
+	      var _extends2;
+
+	      var dispatch = _ref.dispatch;
+
+	      return _extends({}, props, (_extends2 = {}, _defineProperty(_extends2, setStateName, function (newState) {
 	        return dispatch((0, _setStateByPath2.default)(path, newState));
 	      }), _defineProperty(_extends2, replaceStateName, function (newState) {
 	        return dispatch((0, _replaceStateByPath2.default)(path, newState));
