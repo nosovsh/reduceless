@@ -9,7 +9,7 @@ import replaceStateByPath from './replaceStateByPath';
  * @param path
  * @returns {Function}
  */
-export default function connectSlicedState(path) {
+export default function connectSlicedState(path, setStateName = 'setState', replaceStateName = 'replaceState') {
   return function (WrappedComponent) {
     return connect(
       state => state,
@@ -19,8 +19,8 @@ export default function connectSlicedState(path) {
         return {
           ...props,
           state: slicedState,
-          setState: newState => dispatch(setStateByPath(path, newState)),
-          replaceState: newState => dispatch(replaceStateByPath(path, newState)),
+          [setStateName]: newState => dispatch(setStateByPath(path, newState)),
+          [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
         };
       }
     )(WrappedComponent);
