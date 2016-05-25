@@ -9,7 +9,7 @@ import replaceStateByPath from './replaceStateByPath';
  * @param path
  * @returns {getStateType(path)}
  */
-export default function connectSlicedState(path) {
+export default function connectSlicedState(path, setStateName = 'setState', replaceStateName = 'replaceState') {
   return function (WrappedComponent) {
     class Connect extends React.Component {
       render() {
@@ -26,8 +26,8 @@ export default function connectSlicedState(path) {
         return {
           ...props,
           state: slicedState,
-          setState: newState => dispatch(setStateByPath(path, newState)),
-          replaceState: newState => dispatch(replaceStateByPath(path, newState)),
+          [setStateName]: newState => dispatch(setStateByPath(path, newState)),
+          [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
         };
       }
     )(Connect);
