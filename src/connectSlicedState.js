@@ -19,12 +19,19 @@ export default function connectSlicedState(path, stateName='state', setStateName
       dispatch => ({dispatch}),
       (state, {dispatch}, props) => {
         const slicedState = get(state, path);
-        return {
-          ...props,
-          [stateName]: slicedState,
-          [setStateName]: newState => dispatch(setStateByPath(path, newState)),
-          [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
+        const result = {
+          ...props
         };
+        if (stateName) {
+          result[stateName] = slicedState;
+        }
+        if (setStateName) {
+          result[setStateName] = newState => dispatch(setStateByPath(path, newState));
+        }
+        if (replaceStateName) {
+          result[replaceStateName] = newState => dispatch(replaceStateByPath(path, newState));
+        }
+        return result
       }
     )(WrappedComponent);
   };
