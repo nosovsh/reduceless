@@ -7,9 +7,12 @@ import replaceStateByPath from './replaceStateByPath';
 /**
  * Connect provided component to `path` part of the redux state
  * @param path
+ * @param stateName
+ * @param setStateName
+ * @param replaceStateName
  * @returns {Function}
  */
-export default function connectSlicedState(path, setStateName = 'setState', replaceStateName = 'replaceState') {
+export default function connectSlicedState(path, stateName='state', setStateName = 'setState', replaceStateName = 'replaceState') {
   return function (WrappedComponent) {
     return connect(
       state => state,
@@ -18,7 +21,7 @@ export default function connectSlicedState(path, setStateName = 'setState', repl
         const slicedState = get(state, path);
         return {
           ...props,
-          state: slicedState,
+          [stateName]: slicedState,
           [setStateName]: newState => dispatch(setStateByPath(path, newState)),
           [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
         };
