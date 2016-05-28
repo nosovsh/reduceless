@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import get from 'lodash/get';
 import setStateByPath from './setStateByPath';
 import replaceStateByPath from './replaceStateByPath';
+import connection from './connection';
+import withState from './withState';
 
 /**
  * Connect provided component to `path` part of the redux state
@@ -13,26 +15,7 @@ import replaceStateByPath from './replaceStateByPath';
  * @returns {Function}
  */
 export default function connectSlicedState(path, stateName='state', setStateName = 'setState', replaceStateName = 'replaceState') {
-  return function (WrappedComponent) {
-    return connect(
-      state => state,
-      dispatch => ({dispatch}),
-      (state, {dispatch}, props) => {
-        const slicedState = get(state, path);
-        const result = {
-          ...props
-        };
-        if (stateName) {
-          result[stateName] = slicedState;
-        }
-        if (setStateName) {
-          result[setStateName] = newState => dispatch(setStateByPath(path, newState));
-        }
-        if (replaceStateName) {
-          result[replaceStateName] = newState => dispatch(replaceStateByPath(path, newState));
-        }
-        return result
-      }
-    )(WrappedComponent);
-  };
+  return connection([
+    withState(path, stateName, setStateName, replaceStateName)
+  ]);
 }
