@@ -5,11 +5,9 @@ const Form = ({state, setState, replaceState}) => {
   return (
     <div>
       <div>
-        Open
-        <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en" target="_blank">
+        Open <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en" target="_blank">
           Redux DevTools
-        </a>
-        To see what's going on under the hood.
+        </a> to see what's going on under the hood.
       </div>
       <input
         type="checkbox"

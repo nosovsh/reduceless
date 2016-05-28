@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers, compose} from 'redux';
 import {wrapReducerWithSetGlobalState, initialStateReducer} from '../../../src';
-import Form from './Form';
+import App from './App';
 
 // wrap your reducers
 const reducer = wrapReducerWithSetGlobalState(
@@ -13,14 +13,26 @@ const reducer = wrapReducerWithSetGlobalState(
     //   reducer2,
 
     // you can use `initialStateReducer` if you don't need any complex functionality inside
-    test: initialStateReducer({
-      contactsPage: {
-        leftBlock: {
-          form: {
-            checked: false,
-            text: '',
-          }
+    site: initialStateReducer({
+      pages: {
+        userPage: {
+          selectedTab: 'tab1',
+        },
+        someOtherPage: {
+          // ...
         }
+      },
+      entities: {
+        users: {
+          'id1': {
+            name: 'John Snow',
+            isDead: true,
+          },
+          // ...
+        }
+      },
+      settings: {
+        background: 'white'
       }
     })
   })
@@ -40,7 +52,7 @@ class Root extends React.Component {
     return (
       <div>
         <Provider store={store}>
-          <Form/>
+          <App />
         </Provider>
       </div>
     );
