@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import get from 'lodash/get';
+import isFunction from 'lodash/isFunction';
 import setStateByPath from './setStateByPath';
 import replaceStateByPath from './replaceStateByPath';
 
@@ -14,7 +15,8 @@ import replaceStateByPath from './replaceStateByPath';
  */
 export default function withState(path, stateName = 'state', setStateName = 'setState', replaceStateName = 'replaceState') {
   return (state, {dispatch}, props) => {
-    const slicedState = get(state, path);
+    const realPath = isFunction(path) ? path(props) : path;
+    const slicedState = get(state, realPath);
     const result = {
       ...props
     };
@@ -22,10 +24,10 @@ export default function withState(path, stateName = 'state', setStateName = 'set
       result[stateName] = slicedState;
     }
     if (setStateName) {
-      result[setStateName] = newState => dispatch(setStateByPath(path, newState));
+      result[setStateName] = newState => dispatch(setStateByPath(realPath, newState));
     }
     if (replaceStateName) {
-      result[replaceStateName] = newState => dispatch(replaceStateByPath(path, newState));
+      result[replaceStateName] = newState => dispatch(replaceStateByPath(realPath, newState));
     }
     return result
   }

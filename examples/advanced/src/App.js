@@ -23,7 +23,9 @@ class App extends React.Component {
           padding: 20,
         }}
       >
-        <User />
+        <User
+          userId="id1"
+        />
       </div>
     )
   }

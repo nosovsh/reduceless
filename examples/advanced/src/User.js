@@ -8,7 +8,7 @@ import _ from 'lodash'
  */
 @connection([
   withState('site.pages.userPage.selectedTab', 'selectedTab', null, 'selectTab'),
-  withState('site.entities.users.id1', 'user', 'updateUser', null),
+  withState(props => `site.entities.users.${props.userId}`, 'user', 'updateUser', null),
   withState('site.settings.background', 'background', null, 'changeBackground'),
 ])
 class User extends React.Component {
