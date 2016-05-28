@@ -1,11 +1,16 @@
 import React from 'react';
 import {connectSlicedState} from '../../../src';
 
-// You can you decorators to simplify you code even more
-@connectSlicedState('test.contactsPage.leftBlock.form', 'form', 'setFormFields', 'replaceForm')
+
+/**
+ * You can use decorators to simplify you code even more.
+ * You can override prop names `connectSlicedState(path, stateName, setStateName, replaceStateName)`
+ * You can send `null` instead of any prop name if you don't need this prop at all
+ */
+@connectSlicedState('test.contactsPage.leftBlock.form', 'form', 'setFormFields', null)
 class Form extends React.Component {
   render() {
-    const {form, setFormFields, replaceForm} = this.props;
+    const {form, setFormFields} = this.props;
     return (
       <div>
         <div>
