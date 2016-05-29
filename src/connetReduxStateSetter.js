@@ -10,13 +10,6 @@ import replaceStateByPath from './replaceStateByPath';
  */
 export default function connetReduxStateSetter(path, setStateName = 'setReduxState', replaceStateName = 'replaceState') {
   return function (WrappedComponent) {
-    class Connect extends React.Component {
-      render() {
-        return (
-          <WrappedComponent {...this.props} />
-        );
-      }
-    }
     return connect(
       null,
       dispatch => ({dispatch}),
@@ -27,6 +20,6 @@ export default function connetReduxStateSetter(path, setStateName = 'setReduxSta
           [replaceStateName]: newState => dispatch(replaceStateByPath(path, newState)),
         };
       }
-    )(Connect);
+    )(WrappedComponent);
   };
 }
