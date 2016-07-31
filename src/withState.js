@@ -1,5 +1,3 @@
-import React from 'react';
-import {connect} from 'react-redux';
 import get from 'lodash/get';
 import isFunction from 'lodash/isFunction';
 import setStateByPath from './setStateByPath';
@@ -8,7 +6,7 @@ import {defaultMemoize} from './utils/defaultMemoize';
 
 // action creators that can be memoized
 const setStateCreator = (realPath, dispatch) => newState => dispatch(setStateByPath(realPath, newState));
-const  replaceStateCreator = (realPath, dispatch) => newState => dispatch(replaceStateByPath(realPath, newState));
+const replaceStateCreator = (realPath, dispatch) => newState => dispatch(replaceStateByPath(realPath, newState));
 
 /**
  * Connect provided component to `path` part of the redux state
@@ -30,7 +28,7 @@ export default function withState(path, stateName = 'state', setStateName = 'set
     const realPath = isFunction(path) ? path(props) : path;
     const slicedState = get(state, realPath);
     const result = {
-      ...props
+      ...props,
     };
     if (stateName) {
       result[stateName] = slicedState;
@@ -41,6 +39,6 @@ export default function withState(path, stateName = 'state', setStateName = 'set
     if (replaceStateName) {
       result[replaceStateName] = replaceStateCreatorMemoized(realPath, dispatch);
     }
-    return result
-  }
+    return result;
+  };
 }

@@ -6,7 +6,7 @@ const setStateByPath = (path, value) => {
     path,
     value,
   };
-}
+};
 
 export default setStateByPath;
 

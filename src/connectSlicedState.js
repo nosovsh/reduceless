@@ -1,8 +1,3 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import get from 'lodash/get';
-import setStateByPath from './setStateByPath';
-import replaceStateByPath from './replaceStateByPath';
 import connection from './connection';
 import withState from './withState';
 
@@ -14,8 +9,8 @@ import withState from './withState';
  * @param replaceStateName
  * @returns {Function}
  */
-export default function connectSlicedState(path, stateName='state', setStateName = 'setState', replaceStateName = 'replaceState') {
+export default function connectSlicedState(path, stateName = 'state', setStateName = 'setState', replaceStateName = 'replaceState') {
   return connection([
-    withState(path, stateName, setStateName, replaceStateName)
+    withState(path, stateName, setStateName, replaceStateName),
   ]);
 }

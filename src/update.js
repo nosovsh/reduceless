@@ -1,9 +1,9 @@
-import clone from 'lodash/clone'
-import set from 'lodash/set'
-import isArray from 'lodash/isArray'
-import head from 'lodash/head'
-import tail from 'lodash/tail'
-import map from 'lodash/map'
+import clone from 'lodash/clone';
+import set from 'lodash/set';
+import isArray from 'lodash/isArray';
+import head from 'lodash/head';
+import tail from 'lodash/tail';
+import map from 'lodash/map';
 
 
 const update = (obj, path, nextValue) => {
@@ -22,13 +22,13 @@ const update = (obj, path, nextValue) => {
       return newObj;
     } else {
       newObj = {};
-      map(obj, (value, key, currentObj) => {
+      map(obj, (value, key) => {
         if (key === pathArr[0]) {
-        newObj[key] = update(value, tail(pathArr), nextValue);
-      } else {
-        newObj[key] = obj[key];
-      }
-    });
+          newObj[key] = update(value, tail(pathArr), nextValue);
+        } else {
+          newObj[key] = obj[key];
+        }
+      });
       return newObj;
     }
   }

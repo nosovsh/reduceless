@@ -16,4 +16,4 @@ export {
   initialStateReducer,
   withState,
   connection,
-}
+};

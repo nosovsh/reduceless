@@ -6,7 +6,7 @@ const replaceStateByPath = (path, value) => {
     path,
     value,
   };
-}
+};
 
 export default replaceStateByPath;
 

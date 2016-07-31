@@ -1,8 +1,4 @@
-import React from 'react';
 import {connect} from 'react-redux';
-import get from 'lodash/get';
-import setStateByPath from './setStateByPath';
-import replaceStateByPath from './replaceStateByPath';
 
 /**
  * Connect provided component to `path` part of the redux state
@@ -10,7 +6,7 @@ import replaceStateByPath from './replaceStateByPath';
  * @returns {Function}
  */
 export default function connections(connectors = []) {
-  return function (WrappedComponent) {
+  return WrappedComponent => {
     return connect(
       state => state,
       dispatch => ({dispatch}),
@@ -18,9 +14,9 @@ export default function connections(connectors = []) {
         return connectors.reduce((newProps, connector) => {
           return {
             ...newProps,
-            ...connector(state, {dispatch}, props)
-          }
-        }, {...props})
+            ...connector(state, {dispatch}, props),
+          };
+        }, {...props});
       }
     )(WrappedComponent);
   };

@@ -12,17 +12,17 @@ const setGlobalStateReducer = (state = {}, action) => {
       };
       return update(state, action.path, newValue);
     case REPLACE_STATE_BY_PATH:
-      return update(state, action.path, action.value)
+      return update(state, action.path, action.value);
     default:
       return state;
   }
-}
+};
 
 const wrapReducerWithSetGlobalState = (reducer = (s) => s) => {
-  return function (state = {}, action) {
+  return (state = {}, action) => {
     const updatedState = setGlobalStateReducer(state, action);
     return reducer(updatedState, action);
-  }
-}
+  };
+};
 
 export default wrapReducerWithSetGlobalState;
